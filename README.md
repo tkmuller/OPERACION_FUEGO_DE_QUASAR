@@ -139,19 +139,19 @@ services:
     image:  alianza-rebelde/operacion-fuego-quasar-api:1.0.0-SNAPSHOT
     restart: always
     ports:
-      - 8080:8080
+      - 8010:8080
     environment:
       spring.application.name: operacion-fuego-quasar-api
       spring.datasource.url: jdbc:h2:mem:testdb
-	  spring.datasource.driverClassName: org.h2.Driver
-      spring.datasource.username: test
-      spring.datasource.password: test
-	  spring.h2.console.enabled: true
+      spring.datasource.driverClassName: org.h2.Driver
+      spring.datasource.username: 'test'
+      spring.datasource.password: 'test'
+      spring.h2.console.enabled: 'true'
       spring.datasource.hikari.connectionTimeout: 30000
       spring.datasource.hikari.idleTimeout: 600000
       spring.datasource.hikari.maxLifetime: 1800000
-	  spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
-	  spring.jpa.hibernate.ddl-auto: create
+      spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
+      spring.jpa.hibernate.ddl-auto: create
 
 ```
 
