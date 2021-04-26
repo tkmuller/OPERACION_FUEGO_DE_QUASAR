@@ -6,7 +6,6 @@ import ar.com.alianza.contracts.request.Satellites;
 import ar.com.alianza.contracts.response.DecodedMessage;
 import ar.com.alianza.entity.Satellite;
 import ar.com.alianza.exception.DecodingMessageException;
-import ar.com.alianza.exception.SatelliteAlreadyExistException;
 import com.lemmingapex.trilateration.NonLinearLeastSquaresSolver;
 import com.lemmingapex.trilateration.TrilaterationFunction;
 import org.apache.commons.math3.fitting.leastsquares.LeastSquaresOptimizer;
@@ -52,9 +51,6 @@ public class IntelligenceService {
     }
 
     public boolean addEncodedMessage(String satelliteName, IncomingMessage incomingMessage) {
-
-        if (satelliteMap.containsKey(satelliteName))
-            throw new SatelliteAlreadyExistException(satelliteName);
 
         satelliteService.findSatelliteByName(satelliteName);
 

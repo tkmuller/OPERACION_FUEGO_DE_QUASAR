@@ -5,7 +5,6 @@ import ar.com.alianza.contracts.request.Satellites;
 import ar.com.alianza.contracts.response.DecodedMessage;
 import ar.com.alianza.entity.Satellite;
 import ar.com.alianza.exception.DecodingMessageException;
-import ar.com.alianza.exception.SatelliteAlreadyExistException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -89,19 +88,6 @@ class IntelligenceServiceTest {
         boolean result = intelligenceService.addEncodedMessage(SATELLITE_1_NAME, incomingMessage);
         assertTrue(result);
 
-    }
-
-    @Test
-    void whenEncodedMessageAlreadyExist() {
-
-        IncomingMessage incomingMessage = IncomingMessage.builder().distance(SATELLITE_1_DISTANCE).message(SATELLITE_1_MESSAGE).build();
-
-        Satellite satellite = Satellite.builder().x(SATELLITE_1_X).y(SATELLITE_1_Y).build();
-        Mockito.when(satelliteService.findSatelliteByName(SATELLITE_1_NAME)).thenReturn(satellite);
-
-        intelligenceService.addEncodedMessage(SATELLITE_1_NAME, incomingMessage);
-
-        assertThrows(SatelliteAlreadyExistException.class,() -> intelligenceService.addEncodedMessage(SATELLITE_1_NAME, incomingMessage));
     }
 
     @Test

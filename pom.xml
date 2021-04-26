@@ -24,7 +24,7 @@
         <jib-maven-plugin.version>2.7.0</jib-maven-plugin.version>
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
 
-        <docker.image.prefix>Alianza-Rebelde</docker.image.prefix>
+        <docker.image.prefix>alianza-rebelde</docker.image.prefix>
 
         <base.package>/src/main/java/ar/com/alianza</base.package>
         <sonar.coverage.exclusions>
@@ -96,6 +96,12 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
             <scope>runtime</scope>
         </dependency>
 

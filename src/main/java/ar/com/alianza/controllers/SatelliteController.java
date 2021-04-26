@@ -2,7 +2,6 @@ package ar.com.alianza.controllers;
 
 import ar.com.alianza.contracts.request.CreateSatelliteRequest;
 import ar.com.alianza.entity.Satellite;
-import ar.com.alianza.exception.PositionException;
 import ar.com.alianza.service.SatelliteService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -29,7 +28,7 @@ public class SatelliteController {
     @GetMapping("/satellite/{name}")
     public Satellite findSatelliteByName(@PathVariable String name) {
 
-        return  satelliteService.findSatelliteByName(name);
+        return satelliteService.findSatelliteByName(name);
 
     }
 
@@ -40,8 +39,8 @@ public class SatelliteController {
 
         satelliteService.createSatellite(Satellite.builder()
                 .name(satellite.getName())
-                .x(validatePosition(satellite.getPosition().getX()))
-                .y(validatePosition(satellite.getPosition().getY()))
+                .x(satellite.getPosition().getX())
+                .y(satellite.getPosition().getY())
                 .build());
     }
 
@@ -50,8 +49,8 @@ public class SatelliteController {
 
         satelliteService.updateSatellite(Satellite.builder()
                 .name(satellite.getName())
-                .x(validatePosition(satellite.getPosition().getX()))
-                .y(validatePosition(satellite.getPosition().getY()))
+                .x(satellite.getPosition().getX())
+                .y(satellite.getPosition().getY())
                 .build());
 
     }
@@ -61,13 +60,6 @@ public class SatelliteController {
     public void deleteSatellite(@PathVariable String name) {
         satelliteService.deleteSatellite(name);
 
-    }
-
-    private Double validatePosition(Double position){
-        if (position.isNaN())
-            throw new PositionException();
-
-        return position;
     }
 
 }

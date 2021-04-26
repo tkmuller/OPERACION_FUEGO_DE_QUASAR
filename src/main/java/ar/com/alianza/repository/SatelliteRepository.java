@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface SatelliteRepository extends CrudRepository<Satellite,String> {
+public interface SatelliteRepository extends CrudRepository<Satellite, String> {
 
     Optional<Satellite> findByName(String name);
 

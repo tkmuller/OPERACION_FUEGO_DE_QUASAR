@@ -9,7 +9,7 @@ public class DecodingMessageException extends RuntimeException {
     private static final String MESSAGE = "You need at least ( 3 ) signal, you only have ( %s ) ";
 
     public DecodingMessageException(int signals) {
-        super(String.format(MESSAGE,signals));
+        super(String.format(MESSAGE, signals));
     }
 
 

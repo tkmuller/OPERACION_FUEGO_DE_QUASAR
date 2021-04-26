@@ -34,9 +34,9 @@ public class TopSecretController {
     @PostMapping("/topsecret_split/{satelliteName}")
     @ResponseStatus(HttpStatus.CREATED)
     public void addEncodedMessage(@PathVariable String satelliteName,
-                                       @RequestBody @Valid IncomingMessage incomingMessage) {
+                                  @RequestBody @Valid IncomingMessage incomingMessage) {
 
-        intelligenceService.addEncodedMessage(satelliteName,incomingMessage);
+        intelligenceService.addEncodedMessage(satelliteName, incomingMessage);
 
 
     }

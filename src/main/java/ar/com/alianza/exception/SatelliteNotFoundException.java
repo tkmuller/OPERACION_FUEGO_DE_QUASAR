@@ -9,6 +9,6 @@ public class SatelliteNotFoundException extends RuntimeException {
     private static final String MESSAGE = "The Satellite %s not found";
 
     public SatelliteNotFoundException(String name) {
-        super(String.format(MESSAGE,name));
+        super(String.format(MESSAGE, name));
     }
 }
