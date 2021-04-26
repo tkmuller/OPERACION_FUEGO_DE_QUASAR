@@ -1,0 +1,333 @@
+{
+	"info": {
+		"_postman_id": "6f0a4123-54db-456f-bd7e-90d2d07038eb",
+		"name": "Operacion fuego de quasar",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "satellites",
+			"item": [
+				{
+					"name": "createSatellite1",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"name\":\"{{satelliteName1}}\",\r\n\"position\":{\r\n\"x\":{{satelliteName1X}},\r\n\"y\":{{satelliteName1Y}}\r\n}\r\n}"
+						},
+						"url": {
+							"raw": "{{url-service}}/rebel/api/satellite",
+							"host": [
+								"{{url-service}}"
+							],
+							"path": [
+								"rebel",
+								"api",
+								"satellite"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateSatellite1",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"name\":\"{{satelliteName1}}\",\r\n\"position\":{\r\n\"x\":0,\r\n\"y\":0\r\n}\r\n}"
+						},
+						"url": {
+							"raw": "{{url-service}}/rebel/api/satellite",
+							"host": [
+								"{{url-service}}"
+							],
+							"path": [
+								"rebel",
+								"api",
+								"satellite"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteSatellite1",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url-service}}/rebel/api/satellite/{{satelliteName1}}",
+							"host": [
+								"{{url-service}}"
+							],
+							"path": [
+								"rebel",
+								"api",
+								"satellite",
+								"{{satelliteName1}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createSatellite2",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"name\":\"{{satelliteName2}}\",\r\n\"position\":{\r\n\"x\":{{satelliteName2X}},\r\n\"y\":{{satelliteName2Y}}\r\n}\r\n}"
+						},
+						"url": {
+							"raw": "{{url-service}}/rebel/api/satellite",
+							"host": [
+								"{{url-service}}"
+							],
+							"path": [
+								"rebel",
+								"api",
+								"satellite"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createSatellite3",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"name\":\"{{satelliteName2}}\",\r\n\"position\":{\r\n\"x\":{{satelliteName2X}},\r\n\"y\":{{satelliteName2Y}}\r\n}\r\n}"
+						},
+						"url": {
+							"raw": "{{url-service}}/rebel/api/satellite",
+							"host": [
+								"{{url-service}}"
+							],
+							"path": [
+								"rebel",
+								"api",
+								"satellite"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllSatellites",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{url-service}}/rebel/api/satellite",
+							"protocol": "http",
+							"host": [
+								"{{url-service}}"
+							],
+							"path": [
+								"rebel",
+								"api",
+								"satellite"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getSatelliteByName",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/rebel/api/satellite/joda",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"rebel",
+								"api",
+								"satellite",
+								"joda"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "topSecret",
+			"item": [
+				{
+					"name": "TrackingSignal",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"satellites\":[\r\n      {\r\n         \"name\":\"{{satelliteName1}}\",\r\n         \"distance\":{{satelliteName1D}},\r\n         \"message\":[\r\n            \"este\",\r\n            \"\",\r\n            \"\",\r\n            \"mensaje\",\r\n            \"\"\r\n         ]\r\n      },\r\n      {\r\n         \"name\":\"{{satelliteName2}}\",\r\n         \"distance\":{{satelliteName2D}},\r\n         \"message\":[\r\n            \"\",\r\n            \"es\",\r\n            \"\",\r\n            \"\",\r\n            \"secreto\"\r\n         ]\r\n      },\r\n      {\r\n         \"name\":\"{{satelliteName3}}\",\r\n         \"distance\":{{satelliteName3D}},\r\n         \"message\":[\r\n            \"este\",\r\n            \"\",\r\n            \"un\",\r\n            \"\",\r\n            \"\"\r\n         ]\r\n      }\r\n   ]\r\n}"
+						},
+						"url": {
+							"raw": "{{url-service}}/rebel/api/topsecret",
+							"host": [
+								"{{url-service}}"
+							],
+							"path": [
+								"rebel",
+								"api",
+								"topsecret"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "topSecret_split",
+			"item": [
+				{
+					"name": "addSignal1",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"warning": "This is a duplicate header and will be overridden by the Content-Type header generated by Postman.",
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"distance\": {{satelliteName1D}},\r\n\"message\": [\"este\", \"\", \"\", \"mensaje\", \"\"]\r\n}"
+						},
+						"url": {
+							"raw": "{{url-service}}/rebel/api/topsecret_split/{{satelliteName1}}",
+							"host": [
+								"{{url-service}}"
+							],
+							"path": [
+								"rebel",
+								"api",
+								"topsecret_split",
+								"{{satelliteName1}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addSignal2",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"warning": "This is a duplicate header and will be overridden by the Content-Type header generated by Postman.",
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"distance\": {{satelliteName2D}},\r\n\"message\": [\"este\", \"\", \"\", \"mensaje\", \"\"]\r\n}"
+						},
+						"url": {
+							"raw": "{{url-service}}/rebel/api/topsecret_split/{{satelliteName2}}",
+							"host": [
+								"{{url-service}}"
+							],
+							"path": [
+								"rebel",
+								"api",
+								"topsecret_split",
+								"{{satelliteName2}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addSignal3",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"warning": "This is a duplicate header and will be overridden by the Content-Type header generated by Postman.",
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"distance\": {{satelliteName3D}},\r\n\"message\": [\"este\", \"\", \"\", \"mensaje\", \"\"]\r\n}"
+						},
+						"url": {
+							"raw": "{{url-service}}/rebel/api/topsecret_split/{{satelliteName3}}",
+							"host": [
+								"{{url-service}}"
+							],
+							"path": [
+								"rebel",
+								"api",
+								"topsecret_split",
+								"{{satelliteName3}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getMessage",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
