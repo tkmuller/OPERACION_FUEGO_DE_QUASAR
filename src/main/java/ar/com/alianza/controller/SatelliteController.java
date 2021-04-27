@@ -2,10 +2,12 @@ package ar.com.alianza.controller;
 
 import ar.com.alianza.contract.request.CreateSatelliteRequest;
 import ar.com.alianza.entity.Satellite;
+import ar.com.alianza.exception.BadRequestException;
 import ar.com.alianza.service.SatelliteService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -32,13 +34,19 @@ public class SatelliteController {
     @GetMapping("/satellite/{name}")
     public Satellite findSatelliteByName(@PathVariable String name) {
 
+
         return satelliteService.findSatelliteByName(name);
 
     }
 
     @PostMapping("/satellite")
     @ResponseStatus(HttpStatus.CREATED)
-    public Satellite createSatellite(@RequestBody @Valid CreateSatelliteRequest satellite) {
+    public Satellite createSatellite(@RequestBody @Valid CreateSatelliteRequest satellite, Errors errors) {
+
+        if (errors.hasErrors()) {
+            logger.error("Error starting process to create satellite because: " + errors.getAllErrors().get(0).getDefaultMessage());
+            throw new BadRequestException(errors.getAllErrors().get(0).getDefaultMessage());
+        }
 
         logger.trace("Starting process to create satellite: " + satellite.getName());
         return satelliteService.createSatellite(Satellite.builder()
@@ -49,7 +57,12 @@ public class SatelliteController {
     }
 
     @PutMapping("/satellite")
-    public Satellite updateSatellite(@RequestBody @Valid CreateSatelliteRequest satellite) {
+    public Satellite updateSatellite(@RequestBody @Valid CreateSatelliteRequest satellite, Errors errors) {
+
+        if (errors.hasErrors()) {
+            logger.error("Error starting process to update satellite because : " + errors.getAllErrors().get(0).getDefaultMessage());
+            throw new BadRequestException(errors.getAllErrors().get(0).getDefaultMessage());
+        }
 
         logger.trace("Starting process to update satellite: " + satellite.getName());
         return satelliteService.updateSatellite(Satellite.builder()
