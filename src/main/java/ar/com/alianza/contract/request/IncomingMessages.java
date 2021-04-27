@@ -1,4 +1,4 @@
-package ar.com.alianza.contracts.request;
+package ar.com.alianza.contract.request;
 
 import ar.com.alianza.validator.MinSizeConstraint;
 import lombok.Getter;

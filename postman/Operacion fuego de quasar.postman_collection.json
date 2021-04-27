@@ -270,7 +270,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\"distance\": {{satelliteName2D}},\r\n\"message\": [\"este\", \"\", \"\", \"mensaje\", \"\"]\r\n}"
+							"raw": "{\r\n\"distance\": {{satelliteName2D}},\r\n\"message\": [\"\", \"es\", \"\", \"\", \"secreto\"]\r\n}"
 						},
 						"url": {
 							"raw": "{{url-service}}/rebel/api/topsecret_split/{{satelliteName2}}",
@@ -301,7 +301,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\"distance\": {{satelliteName3D}},\r\n\"message\": [\"este\", \"\", \"\", \"mensaje\", \"\"]\r\n}"
+							"raw": "{\r\n\"distance\": {{satelliteName3D}},\r\n\"message\": [\"este\", \"\", \"un\", \"\", \"\"]\r\n}"
 						},
 						"url": {
 							"raw": "{{url-service}}/rebel/api/topsecret_split/{{satelliteName3}}",
@@ -323,7 +323,17 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": null
+						"url": {
+							"raw": "{{url-service}}/rebel/api/topsecret_split",
+							"host": [
+								"{{url-service}}"
+							],
+							"path": [
+								"rebel",
+								"api",
+								"topsecret_split"
+							]
+						}
 					},
 					"response": []
 				}

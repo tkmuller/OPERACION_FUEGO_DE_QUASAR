@@ -1,6 +1,6 @@
-package ar.com.alianza.contracts.response;
+package ar.com.alianza.contract.response;
 
-import ar.com.alianza.contracts.request.Position;
+import ar.com.alianza.contract.request.Position;
 import lombok.Builder;
 import lombok.Getter;
 

@@ -1,4 +1,4 @@
-package ar.com.alianza.contracts.request;
+package ar.com.alianza.contract.request;
 
 import lombok.Builder;
 import lombok.Getter;

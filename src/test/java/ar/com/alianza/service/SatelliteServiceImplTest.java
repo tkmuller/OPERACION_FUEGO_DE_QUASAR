@@ -4,17 +4,19 @@ import ar.com.alianza.entity.Satellite;
 import ar.com.alianza.exception.SatelliteAlreadyExistException;
 import ar.com.alianza.exception.SatelliteNotFoundException;
 import ar.com.alianza.repository.SatelliteRepository;
+import ar.com.alianza.service.impl.SatelliteServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.*;
 
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-class SatelliteServiceTest {
+class SatelliteServiceImplTest {
 
-    private SatelliteService satelliteService;
+    private SatelliteServiceImpl satelliteServiceImpl;
 
     @Mock
     private SatelliteRepository mockSatelliteRepository;
@@ -34,14 +36,18 @@ class SatelliteServiceTest {
     void setUp() {
         MockitoAnnotations.initMocks(this);
 
-        satelliteService = new SatelliteService(mockSatelliteRepository);
+        satelliteServiceImpl = new SatelliteServiceImpl(mockSatelliteRepository);
 
     }
 
     @Test
     void createSatellite() {
 
-        satelliteService.createSatellite(Satellite.builder().name(SATELLITE_1_NAME).x(SATELLITE_1_X).y(SATELLITE_1_Y).build());
+        Satellite satellite = Satellite.builder().name(SATELLITE_1_NAME).x(SATELLITE_1_X).y(SATELLITE_1_Y).build();
+        Mockito.when(mockSatelliteRepository.findByName(SATELLITE_1_NAME)).thenReturn(Optional.empty()).thenReturn(Optional.of(satellite));
+
+        satelliteServiceImpl.createSatellite(Satellite.builder().name(SATELLITE_1_NAME).x(SATELLITE_1_X).y(SATELLITE_1_Y).build());
+
 
         Mockito.verify(mockSatelliteRepository).save(captorSatellite.capture());
 
@@ -53,7 +59,7 @@ class SatelliteServiceTest {
         Satellite satellite = Satellite.builder().name(SATELLITE_1_NAME).x(SATELLITE_1_X).y(SATELLITE_1_Y).build();
         Mockito.when(mockSatelliteRepository.findByName(SATELLITE_1_NAME)).thenReturn(Optional.of(satellite));
 
-        assertThrows(SatelliteAlreadyExistException.class, () -> satelliteService.createSatellite(satellite));
+        assertThrows(SatelliteAlreadyExistException.class, () -> satelliteServiceImpl.createSatellite(satellite));
 
     }
 
@@ -63,14 +69,14 @@ class SatelliteServiceTest {
         Satellite satellite = Satellite.builder().name(SATELLITE_1_NAME).x(SATELLITE_1_X).y(SATELLITE_1_Y).build();
         Mockito.when(mockSatelliteRepository.findByName(SATELLITE_1_NAME)).thenReturn(Optional.of(satellite));
 
-        Satellite result = satelliteService.findSatelliteByName(SATELLITE_1_NAME);
+        Satellite result = satelliteServiceImpl.findSatelliteByName(SATELLITE_1_NAME);
         assertEquals(result, satellite);
     }
 
     @Test
     void whenSatelliteDontExist() {
 
-        assertThrows(SatelliteNotFoundException.class, () -> satelliteService.findSatelliteByName(SATELLITE_1_NAME));
+        assertThrows(SatelliteNotFoundException.class, () -> satelliteServiceImpl.findSatelliteByName(SATELLITE_1_NAME));
     }
 
     @Test
@@ -79,7 +85,7 @@ class SatelliteServiceTest {
         Satellite satellite = Satellite.builder().name(SATELLITE_1_NAME).x(SATELLITE_1_X).y(SATELLITE_1_Y).build();
         Mockito.when(mockSatelliteRepository.findByName(SATELLITE_1_NAME)).thenReturn(Optional.of(satellite));
 
-        satelliteService.updateSatellite(Satellite.builder().name(SATELLITE_1_NAME).x(SATELLITE_2_X).y(SATELLITE_2_Y).build());
+        satelliteServiceImpl.updateSatellite(Satellite.builder().name(SATELLITE_1_NAME).x(SATELLITE_2_X).y(SATELLITE_2_Y).build());
 
         Mockito.verify(mockSatelliteRepository).save(captorSatellite.capture());
     }
@@ -89,7 +95,7 @@ class SatelliteServiceTest {
 
         Satellite satellite = Satellite.builder().name(SATELLITE_1_NAME).x(SATELLITE_1_X).y(SATELLITE_1_Y).build();
 
-        assertThrows(SatelliteNotFoundException.class, () -> satelliteService.updateSatellite(satellite));
+        assertThrows(SatelliteNotFoundException.class, () -> satelliteServiceImpl.updateSatellite(satellite));
 
     }
 
@@ -99,7 +105,7 @@ class SatelliteServiceTest {
         Satellite satellite = Satellite.builder().name(SATELLITE_1_NAME).x(SATELLITE_1_X).y(SATELLITE_1_Y).build();
         Mockito.when(mockSatelliteRepository.findByName(SATELLITE_1_NAME)).thenReturn(Optional.of(satellite)).thenReturn(null);
 
-        satelliteService.deleteSatellite((SATELLITE_1_NAME));
+        satelliteServiceImpl.deleteSatellite((SATELLITE_1_NAME));
 
         Mockito.verify(mockSatelliteRepository).delete(satellite);
     }

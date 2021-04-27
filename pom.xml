@@ -29,6 +29,9 @@
         <base.package>/src/main/java/ar/com/alianza</base.package>
         <sonar.coverage.exclusions>
             ${base.package}/configuration/**/*
+            ${base.package}/validator/**/*
+            ${base.package}/repository/**/*
+            ${base.package}/exception/**/*
         </sonar.coverage.exclusions>
     </properties>
 
@@ -109,6 +112,19 @@
             <groupId>com.lemmingapex.trilateration</groupId>
             <artifactId>trilateration</artifactId>
             <version>1.0.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>2.9.2</version>
+
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>2.9.2</version>
         </dependency>
 
     </dependencies>

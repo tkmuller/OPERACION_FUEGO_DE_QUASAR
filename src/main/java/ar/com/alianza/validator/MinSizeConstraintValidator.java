@@ -1,6 +1,6 @@
 package ar.com.alianza.validator;
 
-import ar.com.alianza.contracts.request.Satellites;
+import ar.com.alianza.contract.request.Satellites;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
