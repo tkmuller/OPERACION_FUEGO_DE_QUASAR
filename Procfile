@@ -1,1 +1,0 @@
-web: java -jar target/operacion-fuego-quasar-api-1.0.0-SNAPSHOT.jar --spring.config.additional-location=file:config/ --spring.profiles.active=dev-h2
