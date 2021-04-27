@@ -14,7 +14,7 @@ Todas las respuestas erróneas retornan un código HTTP de la serie 4xx o 5xx co
   "status": 404,
   "error": "not_found",
   "message": "satellite xxx not found",
-  "path": "/auth/otp"
+  "path": "/rebel/api/satellite"
 }
 ```
 
@@ -63,6 +63,12 @@ Content-Type: application/json
 
 ```
 201 - Created
+{
+    "id": 1,
+    "name": "kenobi",
+    "x": -500.0,
+    "y": -200.0
+}
 ```
 
 
@@ -112,6 +118,12 @@ Content-Type: application/json
 
 ```
 200 - Ok
+{
+    "id": 1,
+    "name": "kenobi",
+    "x": -500.0,
+    "y": -200.0
+}
 ```
 
 
@@ -365,7 +377,6 @@ En caso de respuesta errónea
 | ----------- | ---------------------------------------- | ------------------------------------------------------ |
 | 400         | Bad Request		                         | Parámetros incorrectos, request mal formado     		  |
 | 404         | Not Found		           				 | No se puedo encontrar el satelites enviado             |
-| 409         | Conflict		           				 | Ya existe una señal registrada para este satelite      |
 
 
 #### GET /rebel/api/topsecret_split
