@@ -106,7 +106,13 @@ spring:
 
 ### Ejecución desde el IDE
 
-Ejecutar la aplicación como una aplicación SpringBoot, desde la clase principal *OperacionFuegoQuasar*.
+Se debe debe selecionar un perfil de configurarcion situado en la carpeta *Config* que esta en la raiz del proyecto.
+y activamos el perfil pasando 
+```
+--spring.profiles.active=dev-h2 
+```
+
+como un  program arguments.
 
 ### Ejecución como JAR
 * Pre-requisito: Realizar el build del .jar
@@ -114,7 +120,7 @@ Ejecutar la aplicación como una aplicación SpringBoot, desde la clase principa
 Ejemplo utilizando un archivo de propiedades llamado application.properties
 
 ```
-java -jar operacion-fuego-quasar-api:{project.version}.jar --spring.config.location=application.properties
+java -jar target/operacion-fuego-quasar-api-1.0.0-SNAPSHOT.jar --spring.config.additional-location=file:config/ --spring.profiles.active=dev-h2
 ```
 
 
@@ -183,18 +189,6 @@ docker-compose down
 ```
 
 
-
-#### Con docker run:
-
-
-Ejemplo ejecutando una imagen que existe en docker registry
-
-```
-docker run -d  alianza-rebelde/operacion-fuego-quasar-api:{project.version} -p 8080:8080
-```
-
-
-
 ## Configuración Eclipse
 
 ##### Configurar Lombok plugin
@@ -202,8 +196,32 @@ docker run -d  alianza-rebelde/operacion-fuego-quasar-api:{project.version} -p 8
 - Luego importar el proyecto maven en Eclipse y realizar el build.
 
 
-
 ## Configuración Intellij
 
 ##### Configurar Lombok plugin
 Seguir los pasos descriptos en [https://projectlombok.org/setup/intellij](https://projectlombok.org/setup/intellij)
+
+
+## Pruebas
+
+### POSTMAN
+
+En la raiz del proyecto se encuentra la carpeta *postman* que contiene dos JSON para ser importados,
+Uno corresponde a una collecion de request y el otro a Variables de entorno para ser consumida por la collecion antes mencionada.
+
+### SWAGGER
+
+La aplicacion tiene incorporado un swagger con el cual se podra visualizar los resquest que consume la aplicacion y probarlo,
+para poder acceder a el necesitamos ingresamos la siguiente extension a la url de nuestra api
+
+```
+{url-api}/swagger-ui.html
+
+ejemplo:
+localhost:8080/swagger-ui.html
+```
+
+##Documentacion de la api
+
+Dentro de *src* tenemos la carpeta *docs* donde podemos encontrar la documentacion de la api
+
