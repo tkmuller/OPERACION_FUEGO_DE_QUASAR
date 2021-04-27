@@ -8,5 +8,5 @@
 
 [build]
   base    = ""
-  publish = "target/site"
-  command = "./mvnw clean site"
+  publish = "target/"
+  command = "./mvnw clean install"
