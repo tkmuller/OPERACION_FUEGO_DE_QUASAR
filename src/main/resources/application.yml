@@ -14,12 +14,12 @@ management:
       allowed-methods: GET
   endpoint.health.show-details: always
 
-  spring:
-    application.name: fuego-quasar-api
-    datasource:
-      url: postgres://fmuptipfztmvix:12d7e67f7b1830ccb551a47e7e39df0500b971143e790fcdf36c9b9ff8ce0106@ec2-23-21-229-200.compute-1.amazonaws.com:5432/d97jm2jtk2him3
-      username: fmuptipfztmvix
-      password: ad12d7e67f7b1830ccb551a47e7e39df0500b971143e790fcdf36c9b9ff8ce0106min
-    jpa:
-      properties.hibernate.dialect: org.hibernate.dialect.PostgreSQL10Dialect
-      hibernate.ddl-auto: update
+spring:
+  application.name: fuego-quasar-api_dev-postgres
+  datasource:
+    url: postgres://fmuptipfztmvix:12d7e67f7b1830ccb551a47e7e39df0500b971143e790fcdf36c9b9ff8ce0106@ec2-23-21-229-200.compute-1.amazonaws.com:5432/d97jm2jtk2him3
+    username: fmuptipfztmvix
+    password: ad12d7e67f7b1830ccb551a47e7e39df0500b971143e790fcdf36c9b9ff8ce0106min
+  jpa:
+    properties.hibernate.dialect: org.hibernate.dialect.PostgreSQL10Dialect
+    hibernate.ddl-auto: update
